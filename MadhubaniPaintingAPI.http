@@ -1,0 +1,6 @@
+@MadhubaniPaintingAPI_HostAddress = http://localhost:5155
+
+GET {{MadhubaniPaintingAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
