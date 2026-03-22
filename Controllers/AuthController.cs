@@ -105,7 +105,34 @@ namespace MadhubaniPaintingAPI.Controllers
                 await _context.SaveChangesAsync();
             }
 
+            //if (token != null)
+            //{
+            //    token.IsRevoked = true;
+            //    await _context.SaveChangesAsync();
+            //}
+            await _service.LogoutAsync(request.RefreshToken);
+
             return Ok(new { message = "Logged out successfully" });
+        }
+
+
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordRequest request)
+        {
+            var token = await _service.ForgotPasswordAsync(request);
+
+            return Ok(new
+            {
+                message = "Reset link sent",
+                token = token // ⚠️ remove in production
+            });
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordRequest request)
+        {
+            var result = await _service.ResetPasswordAsync(request);
+            return Ok(new { message = result });
         }
     }
 }
