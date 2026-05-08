@@ -15,12 +15,12 @@ namespace MadhubaniPaintingAPI.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly IUserService _service;
+        private readonly IAuthService _service;
         private readonly AppDbContext _context;
         private readonly IJwtService _jwtService;
         private readonly IConfiguration _config;
 
-        public AuthController(IUserService service, AppDbContext context, IJwtService jwtService, IConfiguration config)
+        public AuthController(IAuthService service, AppDbContext context, IJwtService jwtService, IConfiguration config)
         {
             _service = service;
             _context = context;
